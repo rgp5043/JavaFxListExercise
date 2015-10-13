@@ -6,9 +6,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/8.0.51" xmlns:fx="http://javafx.com/fxml/1" fx:controller="populatelist.FXMLDocumentController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="501.0" prefWidth="477.0" xmlns="http://javafx.com/javafx/8.0.51" xmlns:fx="http://javafx.com/fxml/1" fx:controller="populatelist.FXMLDocumentController">
   <children>
-    <Button fx:id="button" layoutX="128.0" layoutY="85.0" onAction="#handleButtonAction" text="Click Me!" />
+    <Button fx:id="button" layoutX="34.0" layoutY="43.0" onAction="#handleButtonAction" text="Click Me!" />
     <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <ListView fx:id="lvPeople" layoutX="34.0" layoutY="94.0" prefHeight="209.0" prefWidth="202.0" />
+      <TextField fx:id="tfFirstName" layoutX="34.0" layoutY="346.0" />
+      <TextField fx:id="tfLastName" layoutX="222.0" layoutY="346.0" />
+      <Label layoutX="38.0" layoutY="327.0" text="First Name" />
+      <Label layoutX="222.0" layoutY="327.0" text="Last Name" />
+      <Button fx:id="btnAddPerson" layoutX="34.0" layoutY="401.0" mnemonicParsing="false" onMouseClicked="#handleBtnAddPersonClicked" text="Add" />
   </children>
 </AnchorPane>
