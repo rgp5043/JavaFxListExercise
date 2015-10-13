@@ -8,6 +8,8 @@ package populatelist;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -50,10 +52,26 @@ public class FXMLDocumentController implements Initializable {
     SyncPeopleListView();
   
   }  
-
     @FXML
     private void handleBtnAddPersonClicked(MouseEvent event) {
-            // Build up full name
+            Person newPerson = new Person();
+    newPerson.setFirstName(tfFirstName.getText());
+    newPerson.setLastName(tfLastName.getText());
+    
+    EntityManagerFactory emf =
+    Persistence.createEntityManagerFactory("PopulateListPU");
+
+PersonJpaController jpaPerson =
+    new PersonJpaController(emf);
+
+try {
+  jpaPerson.create(newPerson);
+} catch (Exception ex) {
+  Logger.getLogger(FXMLDocumentController.class.getName()).log(
+    Level.SEVERE, null, ex
+);
+
+
     String fullName = tfFirstName.getText() + " " +
         tfLastName.getText();
     // Debugging to be removed later
@@ -62,10 +80,12 @@ public class FXMLDocumentController implements Initializable {
     lvPeople.getItems().add(fullName);
 
     }
-     public void SyncPeopleListView() {
 
-    // Items inside the list
-    ObservableList<String> items = lvPeople.getItems();
+   
+    public void SyncPeopleListView() {
+
+    ObservableList<String> items;
+      items = lvPeople.getItems();
 
     // Clear out the list
     items.clear();
